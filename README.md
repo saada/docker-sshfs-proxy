@@ -1,6 +1,6 @@
 # Docker SSHFS Proxy
 
-Experiment with streaming files using protocols SSH, SFTP, SSHFS simulated in Docker from macOS clients
+Experiment with streaming files using SSH, SFTP, SSHFS protocols over two ssh hops via proxy simulated in Docker from macOS clients.
 To run the experiment, we simulate two ssh servers on the same network.
 
 ## Setup
@@ -9,7 +9,7 @@ Clone this repo, then run `docker-compose up`.
 
 You will effectively run two containers as `ssh-proxy => ssh-server`.
 
-Update `~/.ssh/config` to setup ssh proxy configuration.
+Update `~/.ssh/config` to setup ssh proxy configuration to use the `ssh-proxy` running on `localhost:2222` as a proxy.
 
 ```ssh
 Host ssh-server
