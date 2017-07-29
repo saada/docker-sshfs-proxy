@@ -1,0 +1,13 @@
+version: '3'
+services:
+  ssh-server:
+    image: rastasheep/ubuntu-sshd
+    volumes:
+      - ./sshserverkey.pub:/root/.ssh/authorized_keys
+      - ./mounted_fs:/tmp/mounted_fs
+  ssh-proxy:
+    image: rastasheep/ubuntu-sshd
+    ports:
+      - "2222:22"
+    volumes:
+      - ./sshproxykey.pub:/root/.ssh/authorized_keys
