@@ -12,7 +12,7 @@ You will effectively run two containers as `ssh-proxy => ssh-server`.
 Update `~/.ssh/config` to setup ssh proxy configuration to use the `ssh-proxy` running on `localhost:2222` as a proxy.
 
 ```ssh
-Host ssh-server
+Host proxied-ssh-server
   HostName ssh-server
   User root
   IdentityFile ~/HackHackHack/Experiments/sshfs-proxy/sshserverkey
@@ -27,15 +27,15 @@ brew cask install osxfuse
 brew install sshfs
 # mount remote directory
 mkdir /tmp/mounted_fs
-sshfs ssh-server:/tmp/mounted_fs /tmp/mounted_fs
+sshfs proxied-ssh-server:/tmp/mounted_fs /tmp/mounted_fs
 # open finder on mounted drive
 open /tmp/mounted_fs
 # ssh into the machine
-ssh ssh-server
+ssh proxied-ssh-server
 # sftp
-sftp ssh-server
+sftp proxied-ssh-server
 # edit text file
-ssh ssh-server cat /tmp/mounted_fs/testfile | open -f -a /Applications/Visual\ Studio\ Code.app
+ssh proxied-ssh-server cat /tmp/mounted_fs/testfile | open -f -a /Applications/Visual\ Studio\ Code.app
 # open pdf file
-ssh ssh-server cat /tmp/mounted_fs/file.pdf | open -f -a /Applications/Preview.app
+ssh proxied-ssh-server cat /tmp/mounted_fs/test.pdf | open -f -a /Applications/Preview.app
 ```
